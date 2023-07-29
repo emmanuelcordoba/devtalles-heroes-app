@@ -8,37 +8,12 @@
   ],
   "heroes": [
     {
-      "id": "dc-superman",
-      "superhero": "Superman",
-      "publisher": "DC Comics",
-      "alter_ego": "Kal-El",
-      "first_appearance": "Action Comics #1",
-      "characters": "Kal-El",
-      "alt_img": "https://media.gq.com.mx/photos/6046677d32fb42c17c0c6fe7/1:1/w_2000,h_2000,c_limit/SUPERMAN.jpg"
-    },
-    {
-      "id": "dc-green",
-      "superhero": "Green Lantern",
-      "publisher": "DC Comics",
-      "alter_ego": "Alan Scott",
-      "first_appearance": "All-American Comics #16",
-      "characters": "Alan Scott, Hal Jordan, Guy Gardner, John Stewart, Kyle Raynor, Jade, Sinestro, Simon Baz"
-    },
-    {
       "id": "dc-arrow",
       "superhero": "Green Arrow",
       "publisher": "DC Comics",
       "alter_ego": "Oliver Queen",
       "first_appearance": "More Fun Comics #73",
       "characters": "Oliver Queen"
-    },
-    {
-      "id": "dc-wonder",
-      "superhero": "Wonder Woman",
-      "publisher": "DC Comics",
-      "alter_ego": "Princess Diana",
-      "first_appearance": "All Star Comics #8",
-      "characters": "Princess Diana"
     },
     {
       "id": "dc-martian",

@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { switchMap } from "rxjs";
+import { filter, switchMap, tap} from "rxjs";
 import {Hero, Publisher} from "../../interfaces/hero.interface";
 import {HeroesServices} from "../../services/heroes.services";
 import {ConfirmDialogComponent} from "../../components/confirm-dialog/confirm-dialog.component";
@@ -82,19 +82,16 @@ export class NewPageComponent implements OnInit{
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: this.currentHero,
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if(!result) return;
-      this.heroesService.deleteHeroById(this.currentHero.id)
-        .subscribe( res => {
-          if(res)
-          {
-            this.showSnackBar(`Heroe borrado.`);
-            this.router.navigate(['/heroes'])
-          }
-        })
-    });
+    dialogRef.afterClosed()
+      .pipe(
+        filter( (confirmResult: boolean) => confirmResult),
+        switchMap(() => this.heroesService.deleteHeroById(this.currentHero.id)),
+        filter( (wasDeleted: boolean) => wasDeleted)
+      )
+      .subscribe(() => {
+        this.showSnackBar(`Heroe borrado.`);
+        this.router.navigate(['/heroes'])
+      });
   }
 
   showSnackBar(message: string): void
