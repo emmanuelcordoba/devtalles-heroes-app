@@ -86,7 +86,14 @@ export class NewPageComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if(!result) return;
-      // TODO: Borrar y redireccionar.
+      this.heroesService.deleteHeroById(this.currentHero.id)
+        .subscribe( res => {
+          if(res)
+          {
+            this.showSnackBar(`Heroe borrado.`);
+            this.router.navigate(['/heroes'])
+          }
+        })
     });
   }
 
