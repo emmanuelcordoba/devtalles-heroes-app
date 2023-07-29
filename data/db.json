@@ -166,6 +166,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "id": "wK4ZQZx",
+      "superhero": "Antman",
+      "publisher": "Marvel Comics",
+      "alter_ego": "Nose",
+      "first_appearance": "Nose",
+      "characters": "Antman",
+      "alt_img": "https://image.tmdb.org/t/p/w500/qxMs5TU6zOTQ7cbmBZ6xGvHUDa2.jpg"
     }
   ]
 }
