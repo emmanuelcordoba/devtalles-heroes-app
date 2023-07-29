@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { switchMap } from "rxjs";
 import {Hero, Publisher} from "../../interfaces/hero.interface";
 import {HeroesServices} from "../../services/heroes.services";
-import {switchMap} from "rxjs";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {ConfirmDialogComponent} from "../../components/confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: 'app-new-page',
@@ -33,7 +35,8 @@ export class NewPageComponent implements OnInit{
     private heroesService: HeroesServices,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   get currentHero(): Hero
@@ -71,6 +74,20 @@ export class NewPageComponent implements OnInit{
         this.router.navigate(['/heroes/edit', hero.id])
       });
     return;
+  }
+
+  onDeleteHero(): void
+  {
+    if(!this.currentHero.id) throw Error('Hero id is requiered');
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: this.currentHero,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(!result) return;
+      // TODO: Borrar y redireccionar.
+    });
   }
 
   showSnackBar(message: string): void

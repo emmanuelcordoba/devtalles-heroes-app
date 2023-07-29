@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Confirmar</h1>
+<div mat-dialog-content>
+  <p>¿Esta seguro que desea borrar a {{ data.superhero }}?</p>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button color="primary" (click)="onConfirm()" cdkFocusInitial>Si</button>
+</div>
