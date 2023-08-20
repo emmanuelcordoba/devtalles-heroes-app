@@ -15,7 +15,7 @@ export class AuthService {
   private user?: User;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   get currentUser() : User | undefined
@@ -32,6 +32,12 @@ export class AuthService {
         tap(user => this.user = user),
         tap(user =>  localStorage.setItem('token', user.id.toString()))
       );
+  }
+
+  logout()
+  {
+    this.user = undefined;
+    localStorage.clear();
   }
 
 
